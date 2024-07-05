@@ -1,3 +1,10 @@
+const readline = require('readline');
+
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+
 function bubbleSort(array) {
     for (let i = 0; i < array.length - 1; i++) {
         for (let j = 0; j < array.length - i - 1; j++) {
@@ -9,5 +16,8 @@ function bubbleSort(array) {
     return array;
 }
 
-const numbers = [5, 6, 1, 3, 4, 2];
-console.log(bubbleSort(numbers));
+rl.question("Enter numbers separated by spaces: ", (input) => {
+    const numbers = input.split(' ').map(Number);
+    console.log(bubbleSort(numbers));
+    rl.close();
+});

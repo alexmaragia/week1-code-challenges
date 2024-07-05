@@ -1,3 +1,10 @@
+const readline = require('readline');
+
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+
 function calculateNetSalary(basicSalary, benefits) {
     // Constants based on provided links
     const payeeRates = [
@@ -63,6 +70,11 @@ function calculateNetSalary(basicSalary, benefits) {
     console.log(`Net Salary: ${netSalary}`);
 }
 
-const basicSalary = parseFloat(prompt("Enter basic salary:"));
-const benefits = parseFloat(prompt("Enter benefits:"));
-calculateNetSalary(basicSalary, benefits);
+rl.question("Enter basic salary: ", (basicInput) => {
+    const basicSalary = parseFloat(basicInput);
+    rl.question("Enter benefits: ", (benefitsInput) => {
+        const benefits = parseFloat(benefitsInput);
+        calculateNetSalary(basicSalary, benefits);
+        rl.close();
+    });
+});

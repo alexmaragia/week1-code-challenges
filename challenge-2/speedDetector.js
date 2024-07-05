@@ -1,3 +1,10 @@
+const readline = require('readline');
+
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+
 function checkSpeed(speed) {
     const speedLimit = 70;
     const kmPerDemeritPoint = 5;
@@ -13,5 +20,8 @@ function checkSpeed(speed) {
     }
 }
 
-const speed = parseFloat(prompt("Enter the speed of the car (in km/h):"));
-checkSpeed(speed);
+rl.question("Enter the speed of the car (in km/h): ", (input) => {
+    const speed = parseFloat(input);
+    checkSpeed(speed);
+    rl.close();
+});
